@@ -1,6 +1,6 @@
 {
   "name": "decimalnumbermaths",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is a small lightweight library used to work around floating point math errors when working with decimals in javascript. The library follows BODMAS/PEMDAS.",
   "main": "DecimalNumberMaths.js",
   "scripts": {
