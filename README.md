@@ -6,15 +6,22 @@ This is a small lightweight library used to work around floating point math erro
 
 ## Setup
 
-**Loading file:**
+**Single file:**
 
 ```html
 <script type='module' src='./DecimalNumberMaths.js'></script>
 ```
 
+**npm package:**
+
+```bash
+npm install decimalnumbermaths
+```
+
 
 
 ## Usage
+**Single file:**
 
 ```javascript
 import { dMaths } from './DecimalNumberMaths.js';
@@ -23,10 +30,13 @@ let equation = '1 + 2 - 8 * 8';
 let result = dMaths(equation); // => -61
 ```
 
-
+**npm package:**
 
 ```javascript
-dMaths('0.1 + 0.2') // => 0.3
+import { dMaths } from 'decimalnumbermaths';
+
+let equation = '1 + 2 - 8 * 8';
+let result = dMaths(equation); // => -61
 ```
 
 

@@ -1,0 +1,22 @@
+{
+  "name": "decimalnumbermaths",
+  "version": "1.0.0",
+  "description": "This is a small lightweight library used to work around floating point math errors when working with decimals in javascript. The library follows BODMAS/PEMDAS.",
+  "main": "DecimalNumberMaths.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thomas-1200/DecimalNumberMaths.git"
+  },
+  "keywords": [
+    "maths"
+  ],
+  "author": "Thomas Plunkett",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Thomas-1200/DecimalNumberMaths/issues"
+  },
+  "homepage": "https://github.com/Thomas-1200/DecimalNumberMaths#readme"
+}
