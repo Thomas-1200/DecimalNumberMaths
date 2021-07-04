@@ -2,15 +2,15 @@
  *
  * @param {String} equation Equation as string eg. '(5 * 4 - (7 ** 2 + 6) / 6)'
  * @returns {Number} Result of the equation string following BODMAS
- * @Note This function only supports the following operators:  Parenthesis: ( ), Exponent: **, Mulitplication: *,
+ * @Note This function only supports the following operators:  Parentheses: ( ), Exponent: **, Mulitplication: *,
  * Division: /, Addition: +, Subraction: -
  */
-export function dMath(equation) {
-    // Uncomment to see step by step working
-    const DEBUG = true;
+ export function dMaths(equation) {
+    // Set to true to see step by step working
+    const DEBUG = false;
 
     // Fixes spacing between operators and numbers
-    equation = fixSpaces(equation);
+    equation = fixSpacing(equation);
 
     if (DEBUG) {
         console.log(equation);
@@ -38,7 +38,7 @@ export function dMath(equation) {
     */
     if (bRegex.test(equation)) {
         if (!rootRegex.test(equation.match(boRegexCheck)[0])) {
-            equation = equation.replace(bRegex, dMath(equation.match(bRegex)[0]));
+            equation = equation.replace(bRegex, dMaths(equation.match(bRegex)[0]));
         }
     }
 
@@ -56,7 +56,7 @@ export function dMath(equation) {
         }
 
         equation = equation.replace(eq, result);
-        return dMath(equation);
+        return dMaths(equation);
     }
 
     /*
@@ -99,7 +99,7 @@ export function dMath(equation) {
         }
 
         equation = equation.replace(dmRegex, result);
-        return dMath(equation);
+        return dMaths(equation);
     }
 
     /*
@@ -138,7 +138,7 @@ export function dMath(equation) {
         }
 
         equation = equation.replace(asRegex, result);
-        return dMath(equation);
+        return dMaths(equation);
     }
 
     return equation;
@@ -148,28 +148,27 @@ export function dMath(equation) {
  *
  * @param {String} equation Equation as string
  * @returns {String} Equation string
- * @Note This function only supports the following operators:  Parenthesis: ( ), Exponent: **, Mulitplication: *,
+ * @Note This function only supports the following operators:  Parentheses: ( ), Exponent: **, Mulitplication: *,
  * Division: /, Addition: +, Subraction: -
  */
-function fixSpaces(equation) {
-    equation.replace(/  /g, ' ');
+function fixSpacing(equation) {
+    equation.replace(/ {2,}/g, ' ');
 
-    let operatorRegex = /[)*/+-][-0-9]|[-0-9.][(*/+-]|[*/+-]\(|\)[*/+-]/;
+    let operatorRegex = /[)*/+][-0-9]|[-0-9.][(*/+-]|[*/+-]\(|\)[*/+-]|[)*/+-][-]/;
     if (operatorRegex.test(equation)) {
         let eq = equation.match(operatorRegex)[0];
         let string = eq[0] + ' ' + eq[1];
         equation = equation.replace(eq, string);
-
-        return fixSpaces(equation);
+        return fixSpacing(equation);
     }
 
-    let bracketRegex = /\( [-0-9]|[-0-9] \)/;
+    let bracketRegex = /\( [-0-9]|[-0-9.] \)/;
     if (bracketRegex.test(equation)) {
         let eq = equation.match(bracketRegex)[0];
         let string = eq[0] + eq[2];
         equation = equation.replace(eq, string);
 
-        return fixSpaces(equation);
+        return fixSpacing(equation);
     }
 
     return equation
